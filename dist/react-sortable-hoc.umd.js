@@ -37,26 +37,30 @@
 
   var _extends_1 = createCommonjsModule(function(module) {
     function _extends() {
-      (module.exports = _extends = Object.assign
-        ? Object.assign.bind()
-        : function(target) {
-            for (var i = 1; i < arguments.length; i++) {
-              var source = arguments[i];
-              for (var key in source) {
-                if (Object.prototype.hasOwnProperty.call(source, key)) {
-                  target[key] = source[key];
-                }
+      module.exports = _extends =
+        Object.assign ||
+        function(target) {
+          for (var i = 1; i < arguments.length; i++) {
+            var source = arguments[i];
+
+            for (var key in source) {
+              if (Object.prototype.hasOwnProperty.call(source, key)) {
+                target[key] = source[key];
               }
             }
-            return target;
-          }),
-        (module.exports.__esModule = true),
-        (module.exports['default'] = module.exports);
+          }
+
+          return target;
+        };
+
+      (module.exports['default'] = module.exports),
+        (module.exports.__esModule = true);
       return _extends.apply(this, arguments);
     }
-    (module.exports = _extends),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _extends;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   var _extends = unwrapExports(_extends_1);
@@ -65,59 +69,50 @@
     function _arrayWithHoles(arr) {
       if (Array.isArray(arr)) return arr;
     }
-    (module.exports = _arrayWithHoles),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _arrayWithHoles;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   unwrapExports(arrayWithHoles);
 
   var iterableToArrayLimit = createCommonjsModule(function(module) {
     function _iterableToArrayLimit(arr, i) {
-      var _i =
-        null == arr
-          ? null
-          : ('undefined' != typeof Symbol && arr[Symbol.iterator]) ||
-            arr['@@iterator'];
-      if (null != _i) {
-        var _s,
-          _e,
-          _x,
-          _r,
-          _arr = [],
-          _n = !0,
-          _d = !1;
-        try {
-          if (((_x = (_i = _i.call(arr)).next), 0 === i)) {
-            if (Object(_i) !== _i) return;
-            _n = !1;
-          } else
-            for (
-              ;
-              !(_n = (_s = _x.call(_i)).done) &&
-              (_arr.push(_s.value), _arr.length !== i);
-              _n = !0
-            );
-        } catch (err) {
-          (_d = !0), (_e = err);
-        } finally {
-          try {
-            if (
-              !_n &&
-              null != _i['return'] &&
-              ((_r = _i['return']()), Object(_r) !== _r)
-            )
-              return;
-          } finally {
-            if (_d) throw _e;
-          }
+      if (typeof Symbol === 'undefined' || !(Symbol.iterator in Object(arr)))
+        return;
+      var _arr = [];
+      var _n = true;
+      var _d = false;
+      var _e = undefined;
+
+      try {
+        for (
+          var _i = arr[Symbol.iterator](), _s;
+          !(_n = (_s = _i.next()).done);
+          _n = true
+        ) {
+          _arr.push(_s.value);
+
+          if (i && _arr.length === i) break;
         }
-        return _arr;
+      } catch (err) {
+        _d = true;
+        _e = err;
+      } finally {
+        try {
+          if (!_n && _i['return'] != null) _i['return']();
+        } finally {
+          if (_d) throw _e;
+        }
       }
+
+      return _arr;
     }
-    (module.exports = _iterableToArrayLimit),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _iterableToArrayLimit;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   unwrapExports(iterableToArrayLimit);
@@ -125,12 +120,17 @@
   var arrayLikeToArray = createCommonjsModule(function(module) {
     function _arrayLikeToArray(arr, len) {
       if (len == null || len > arr.length) len = arr.length;
-      for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+      for (var i = 0, arr2 = new Array(len); i < len; i++) {
+        arr2[i] = arr[i];
+      }
+
       return arr2;
     }
-    (module.exports = _arrayLikeToArray),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _arrayLikeToArray;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   unwrapExports(arrayLikeToArray);
@@ -148,9 +148,10 @@
       )
         return arrayLikeToArray(o, minLen);
     }
-    (module.exports = _unsupportedIterableToArray),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _unsupportedIterableToArray;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   unwrapExports(unsupportedIterableToArray);
@@ -161,9 +162,10 @@
         'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
       );
     }
-    (module.exports = _nonIterableRest),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _nonIterableRest;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   unwrapExports(nonIterableRest);
@@ -177,9 +179,10 @@
         nonIterableRest()
       );
     }
-    (module.exports = _slicedToArray),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _slicedToArray;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   var _slicedToArray = unwrapExports(slicedToArray);
@@ -190,75 +193,13 @@
         throw new TypeError('Cannot call a class as a function');
       }
     }
-    (module.exports = _classCallCheck),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _classCallCheck;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   var _classCallCheck = unwrapExports(classCallCheck);
-
-  var _typeof_1 = createCommonjsModule(function(module) {
-    function _typeof(obj) {
-      '@babel/helpers - typeof';
-
-      return (
-        ((module.exports = _typeof =
-          'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-            ? function(obj) {
-                return typeof obj;
-              }
-            : function(obj) {
-                return obj &&
-                  'function' == typeof Symbol &&
-                  obj.constructor === Symbol &&
-                  obj !== Symbol.prototype
-                  ? 'symbol'
-                  : typeof obj;
-              }),
-        (module.exports.__esModule = true),
-        (module.exports['default'] = module.exports)),
-        _typeof(obj)
-      );
-    }
-    (module.exports = _typeof),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
-  });
-
-  unwrapExports(_typeof_1);
-
-  var toPrimitive = createCommonjsModule(function(module) {
-    var _typeof = _typeof_1['default'];
-    function _toPrimitive(input, hint) {
-      if (_typeof(input) !== 'object' || input === null) return input;
-      var prim = input[Symbol.toPrimitive];
-      if (prim !== undefined) {
-        var res = prim.call(input, hint || 'default');
-        if (_typeof(res) !== 'object') return res;
-        throw new TypeError('@@toPrimitive must return a primitive value.');
-      }
-      return (hint === 'string' ? String : Number)(input);
-    }
-    (module.exports = _toPrimitive),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
-  });
-
-  unwrapExports(toPrimitive);
-
-  var toPropertyKey = createCommonjsModule(function(module) {
-    var _typeof = _typeof_1['default'];
-
-    function _toPropertyKey(arg) {
-      var key = toPrimitive(arg, 'string');
-      return _typeof(key) === 'symbol' ? key : String(key);
-    }
-    (module.exports = _toPropertyKey),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
-  });
-
-  unwrapExports(toPropertyKey);
 
   var createClass = createCommonjsModule(function(module) {
     function _defineProperties(target, props) {
@@ -267,24 +208,19 @@
         descriptor.enumerable = descriptor.enumerable || false;
         descriptor.configurable = true;
         if ('value' in descriptor) descriptor.writable = true;
-        Object.defineProperty(
-          target,
-          toPropertyKey(descriptor.key),
-          descriptor,
-        );
+        Object.defineProperty(target, descriptor.key, descriptor);
       }
     }
+
     function _createClass(Constructor, protoProps, staticProps) {
       if (protoProps) _defineProperties(Constructor.prototype, protoProps);
       if (staticProps) _defineProperties(Constructor, staticProps);
-      Object.defineProperty(Constructor, 'prototype', {
-        writable: false,
-      });
       return Constructor;
     }
-    (module.exports = _createClass),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _createClass;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   var _createClass = unwrapExports(createClass);
@@ -296,30 +232,34 @@
           "this hasn't been initialised - super() hasn't been called",
         );
       }
+
       return self;
     }
-    (module.exports = _assertThisInitialized),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _assertThisInitialized;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   var _assertThisInitialized = unwrapExports(assertThisInitialized);
 
   var setPrototypeOf = createCommonjsModule(function(module) {
     function _setPrototypeOf(o, p) {
-      (module.exports = _setPrototypeOf = Object.setPrototypeOf
-        ? Object.setPrototypeOf.bind()
-        : function _setPrototypeOf(o, p) {
-            o.__proto__ = p;
-            return o;
-          }),
-        (module.exports.__esModule = true),
-        (module.exports['default'] = module.exports);
+      module.exports = _setPrototypeOf =
+        Object.setPrototypeOf ||
+        function _setPrototypeOf(o, p) {
+          o.__proto__ = p;
+          return o;
+        };
+
+      (module.exports['default'] = module.exports),
+        (module.exports.__esModule = true);
       return _setPrototypeOf(o, p);
     }
-    (module.exports = _setPrototypeOf),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _setPrototypeOf;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   unwrapExports(setPrototypeOf);
@@ -331,6 +271,7 @@
           'Super expression must either be null or a function',
         );
       }
+
       subClass.prototype = Object.create(superClass && superClass.prototype, {
         constructor: {
           value: subClass,
@@ -338,17 +279,50 @@
           configurable: true,
         },
       });
-      Object.defineProperty(subClass, 'prototype', {
-        writable: false,
-      });
       if (superClass) setPrototypeOf(subClass, superClass);
     }
-    (module.exports = _inherits),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _inherits;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   var _inherits = unwrapExports(inherits);
+
+  var _typeof_1 = createCommonjsModule(function(module) {
+    function _typeof(obj) {
+      '@babel/helpers - typeof';
+
+      if (typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol') {
+        module.exports = _typeof = function _typeof(obj) {
+          return typeof obj;
+        };
+
+        (module.exports['default'] = module.exports),
+          (module.exports.__esModule = true);
+      } else {
+        module.exports = _typeof = function _typeof(obj) {
+          return obj &&
+            typeof Symbol === 'function' &&
+            obj.constructor === Symbol &&
+            obj !== Symbol.prototype
+            ? 'symbol'
+            : typeof obj;
+        };
+
+        (module.exports['default'] = module.exports),
+          (module.exports.__esModule = true);
+      }
+
+      return _typeof(obj);
+    }
+
+    module.exports = _typeof;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
+  });
+
+  unwrapExports(_typeof_1);
 
   var possibleConstructorReturn = createCommonjsModule(function(module) {
     var _typeof = _typeof_1['default'];
@@ -356,41 +330,39 @@
     function _possibleConstructorReturn(self, call) {
       if (call && (_typeof(call) === 'object' || typeof call === 'function')) {
         return call;
-      } else if (call !== void 0) {
-        throw new TypeError(
-          'Derived constructors may only return object or undefined',
-        );
       }
+
       return assertThisInitialized(self);
     }
-    (module.exports = _possibleConstructorReturn),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _possibleConstructorReturn;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   var _possibleConstructorReturn = unwrapExports(possibleConstructorReturn);
 
   var getPrototypeOf = createCommonjsModule(function(module) {
     function _getPrototypeOf(o) {
-      (module.exports = _getPrototypeOf = Object.setPrototypeOf
-        ? Object.getPrototypeOf.bind()
+      module.exports = _getPrototypeOf = Object.setPrototypeOf
+        ? Object.getPrototypeOf
         : function _getPrototypeOf(o) {
             return o.__proto__ || Object.getPrototypeOf(o);
-          }),
-        (module.exports.__esModule = true),
-        (module.exports['default'] = module.exports);
+          };
+      (module.exports['default'] = module.exports),
+        (module.exports.__esModule = true);
       return _getPrototypeOf(o);
     }
-    (module.exports = _getPrototypeOf),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _getPrototypeOf;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   var _getPrototypeOf = unwrapExports(getPrototypeOf);
 
   var defineProperty = createCommonjsModule(function(module) {
     function _defineProperty(obj, key, value) {
-      key = toPropertyKey(key);
       if (key in obj) {
         Object.defineProperty(obj, key, {
           value: value,
@@ -401,11 +373,13 @@
       } else {
         obj[key] = value;
       }
+
       return obj;
     }
-    (module.exports = _defineProperty),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _defineProperty;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   var _defineProperty = unwrapExports(defineProperty);
@@ -518,24 +492,23 @@
     function _arrayWithoutHoles(arr) {
       if (Array.isArray(arr)) return arrayLikeToArray(arr);
     }
-    (module.exports = _arrayWithoutHoles),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _arrayWithoutHoles;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   unwrapExports(arrayWithoutHoles);
 
   var iterableToArray = createCommonjsModule(function(module) {
     function _iterableToArray(iter) {
-      if (
-        (typeof Symbol !== 'undefined' && iter[Symbol.iterator] != null) ||
-        iter['@@iterator'] != null
-      )
+      if (typeof Symbol !== 'undefined' && Symbol.iterator in Object(iter))
         return Array.from(iter);
     }
-    (module.exports = _iterableToArray),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _iterableToArray;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   unwrapExports(iterableToArray);
@@ -546,9 +519,10 @@
         'Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
       );
     }
-    (module.exports = _nonIterableSpread),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _nonIterableSpread;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   unwrapExports(nonIterableSpread);
@@ -562,9 +536,10 @@
         nonIterableSpread()
       );
     }
-    (module.exports = _toConsumableArray),
-      (module.exports.__esModule = true),
-      (module.exports['default'] = module.exports);
+
+    module.exports = _toConsumableArray;
+    (module.exports['default'] = module.exports),
+      (module.exports.__esModule = true);
   });
 
   var _toConsumableArray = unwrapExports(toConsumableArray);
